@@ -23,6 +23,7 @@ function Register() {
     e.preventDefault();
 
     if (password !== password2) {
+      toast.error('Passwords do not match');
     }
   };
 
@@ -46,6 +47,7 @@ function Register() {
               value={name}
               onChange={onChange}
               placeholder="Enter your name"
+              required
             />
           </div>
           <div className="form-group">
@@ -57,6 +59,7 @@ function Register() {
               value={email}
               onChange={onChange}
               placeholder="Enter your email"
+              required
             />
           </div>
           <div className="form-group">
@@ -68,6 +71,7 @@ function Register() {
               value={password}
               onChange={onChange}
               placeholder="Enter your password"
+              required
             />
           </div>
           <div className="form-group">
@@ -79,6 +83,7 @@ function Register() {
               value={password2}
               onChange={onChange}
               placeholder="Confirm your Password"
+              required
             />
           </div>
           <div className="form-group">
