@@ -9,13 +9,13 @@ const initialState = {
   message: '',
 };
 
-//Register new user
+//Loging new user
 export const login = createAsyncThunk(
   '/auth/login',
   async (user, thunkAPI) => {}
 );
 
-//Login user
+//Register user
 export const register = createAsyncThunk(
   '/auth/register',
   async (user, thunkAPI) => {
@@ -49,6 +49,11 @@ export const authSlice = createSlice({
     builder
       .addCase(register.pending, (state) => {
         state.isLoading = true;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
