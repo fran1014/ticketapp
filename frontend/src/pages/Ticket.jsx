@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import toast from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTicket, reset } from '../features/tickets/ticketSlice';
 import { useParams } from 'react-router-dom';
@@ -23,7 +23,27 @@ function Ticket() {
     dispatch(getTicket(ticketId));
   }, [isError, message, ticketId]);
 
-  return <div>Ticket</div>;
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <h3>Something Went Wrong</h3>;
+  }
+
+  return (
+    <div className="ticket-page">
+      <header className="ticket-header">
+        <BackButton url="/tickets" />
+        <h2>
+          Ticket ID:{ticket._id}
+          <span className={`status status-${ticket.status}`}>
+            {ticket.status}
+          </span>
+        </h2>
+      </header>
+    </div>
+  );
 }
 
 export default Ticket;
