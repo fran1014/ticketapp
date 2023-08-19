@@ -69,7 +69,7 @@ function Ticket() {
 
   //Create note submit
   const onNoteSubmit = (e) => {
-    e.prevent.default();
+    e.preventDefault();
     console.log(onNoteSubmit);
     dispatch(createNote({ noteText, ticketId }));
     closeModal();
